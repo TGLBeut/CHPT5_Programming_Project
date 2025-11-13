@@ -1,51 +1,39 @@
 /* File: Ch5_Programming_Project.cpp
    Programmer: Sean G
-   Program 3: Population Bar Chart
+   Program 4: Patterns
    Requirements:
 
-   Open and validate external data files.
-   Use loops to read sequential data and associate values with years.
-   Represent numeric values visually using text-based bar charts.
+   Use nested or sequential loops to generate and format character-based output.
+   Control repetition and alignment to match required patterns.
+   Develop confidence with loop structure variations.
 */
 
 #include <iostream>
-#include <fstream>
-#include <string>
 #include <iomanip>
 using namespace std;
 
 int main()
 {
-	const int Max_Years = 10;
-	string Years[Max_Years];
-	int Populations[Max_Years];
-	int YearCount = 0;
+	const int Size = 10;
 
-	ifstream inputFile("population_data.txt");
-
-	if (!inputFile) {
-		cout << "Error opening file.\n";
-		return 1;
-	}
-
-	while (YearCount < Max_Years && inputFile >> Years[YearCount] >> Populations[YearCount]) {
-		YearCount++;
-	}
-	inputFile.close();
-
-	cout << "Each * represents 1,000 people\n\n";
-	cout << "Population Bar Chart\n";
-	cout << "---------------------\n";
-	for (int i = 0; i < YearCount; i++) {
-		cout << Years[i] << " | ";
-
-		int BarLength = Populations[i] / 1000;
-
-		for (int b = 0; b < BarLength; b++) {
+	cout << "Pattern A:\n";
+	for (int i = 1; i <= Size; ++i) {
+		for (int b = 1; b <= i; ++b) {
 			cout << "*";
 		}
-		cout << " (" << Populations[i] << ")" << endl;
+		cout << endl;
 	}
+	cout << endl;
+
+	cout << "Pattern B:\n";
+	for (int i = Size; i >= 1; --i) {
+		for (int b = 1; b <= i; ++b) {
+			cout << "*";
+		}
+		cout << endl;
+	}
+	cout << endl;
+
 	return 0;
 }
 
